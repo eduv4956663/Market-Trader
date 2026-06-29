@@ -38,9 +38,9 @@ if ($cart_items) {
     $cart_data = array(
 	'merchant_id' => '10049767',
 	'merchant_key' => '175e72k4f6om4',
-	'return_url' => "https://snoring-washstand-pretended.ngrok-free.dev/pages/profile.php?id=self",
-	'cancel_url' => 'https://snoring-washstand-pretended.ngrok-free.dev/index.php',
-	'notify_url' => 'https://snoring-washstand-pretended.ngrok-free.dev/api/payout.php',
+	'return_url' => "https://market-trader.rf.gd/pages/profile.php?id=self",
+	'cancel_url' => 'https://market-trader.rf.gd/index.php',
+	'notify_url' => 'https://market-trader.rf.gd/api/payout.php',
 	'email_address' => $user_data['email'],
 	'm_payment_id' => $cart_id,
 	'amount' => number_format(sprintf('%.2f', $total), 2, '.', ''),
