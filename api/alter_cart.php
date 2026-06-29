@@ -97,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($action === 'remove') {
-	// does user have cart
 	if ($user_cart === false) {
 	    response::echo_json([
 		'response' => 'Error occurred.',
@@ -105,10 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	    ]);
 	}
 
-	// yes, get cart
 	$cart_item = database::fetch("SELECT * FROM cart_items WHERE listing_id = ? AND cart_id = ?", [$listing_id, $user_cart['id']]);
 
-	// item in cart? No
 	if ($cart_item === false) {
 	    response::echo_json([
 		'response' => "Cart does not have listing #$listing_id" . ".",
@@ -116,7 +113,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	    ]);
 	}
 
-	// yes, remove
 	database::execute_arr("DELETE FROM cart_items WHERE listing_id = ?", [$listing_id]);
 
 	$listing = database::fetch("SELECT * FROM listings WHERE id = ?", [$listing_id]);
