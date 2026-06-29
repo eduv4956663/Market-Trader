@@ -3,31 +3,27 @@
 class database {
 
     private static ?PDO $pdo = null;
-    private $host = '127.0.0.1';
-    private $db = 'testdb';
-    private $user = 'root';
-    private $charset = 'utf8mb4';
     private static $options = [
-	PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-	PDO::ATTR_EMULATE_PREPARES => false,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
     ];
 
     public static function connect(): PDO {
-	if (self::$pdo === null) {
-	    try {
-		self::$pdo = new PDO(
-			'mysql:host=127.0.0.1;dbname=testdb;charset=utf8mb4',
-			'root',
-			'',
-			self::$options
-		);
-	    } catch (Exception $ex) {
-		throw new PDOException($ex->getMessage(), (int) $ex->getCode());
-	    }
-	}
+        if (self::$pdo === null) {
+            try {
+                self::$pdo = new PDO(
+                        'mysql:host=sql105.infinityfree.com;dbname=if0_41133576_market_trader;charset=utf8mb4',
+                        'if0_41133576',
+                        'FreeTradePass66',
+                        self::$options
+                );
+            } catch (Exception $ex) {
+                throw new \PDOException($ex->getMessage(), (int) $ex->getCode());
+            }
+        }
 
-	return self::$pdo;
+        return self::$pdo;
     }
 
     public static function fetch($statement, $array): mixed {
