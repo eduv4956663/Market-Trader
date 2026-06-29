@@ -5,6 +5,8 @@ require_once '../includes/helpers.php';
 
 http_response_code(200);
 
+// verification code adapted from Payfast documentation.
+// Available: https://developers.payfast.co.za/docs#home
 $pfData = $_POST;
 $pfParamString = "";
 foreach ($pfData as $key => $val) {
